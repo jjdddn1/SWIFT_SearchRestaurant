@@ -498,17 +498,45 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="alA-o2-Wg3">
                                 <rect key="frame" x="0.0" y="0.0" width="283" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search History" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5oE-kB-Q8I">
-                                    <rect key="frame" x="0.0" y="0.0" width="283" height="84"/>
+                                <color key="sectionIndexTrackingBackgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="3aI-lG-600">
+                                    <rect key="frame" x="0.0" y="0.0" width="283" height="64"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Search History" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NoL-K8-5bg">
+                                            <rect key="frame" x="8" y="32" width="267" height="26"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="26" id="Ugc-ti-QpV"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="20"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6G-4U-DWQ">
+                                            <rect key="frame" x="247" y="32" width="28" height="26"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="a6G-4U-DWQ" secondAttribute="height" multiplier="16:15" id="zAK-kV-gY4"/>
+                                            </constraints>
+                                            <state key="normal" backgroundImage="Trash"/>
+                                            <connections>
+                                                <action selector="DeleteAllButtonPressed:" destination="eUB-0N-0Sq" eventType="touchUpInside" id="fzj-lh-ZR8"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
                                     <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="20"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="NoL-K8-5bg" secondAttribute="trailing" constant="8" id="BQP-Zr-b6l"/>
+                                        <constraint firstItem="NoL-K8-5bg" firstAttribute="leading" secondItem="3aI-lG-600" secondAttribute="leading" constant="8" id="YK3-aG-OF1"/>
+                                        <constraint firstItem="a6G-4U-DWQ" firstAttribute="bottom" secondItem="NoL-K8-5bg" secondAttribute="bottom" id="Zot-Jn-AwA"/>
+                                        <constraint firstAttribute="bottom" secondItem="NoL-K8-5bg" secondAttribute="bottom" constant="8" id="jUh-zO-IM4"/>
+                                        <constraint firstItem="a6G-4U-DWQ" firstAttribute="top" secondItem="NoL-K8-5bg" secondAttribute="top" id="jY9-Kc-KBU"/>
+                                        <constraint firstAttribute="trailing" secondItem="a6G-4U-DWQ" secondAttribute="trailing" constant="8" id="nVG-km-dbz"/>
+                                        <constraint firstAttribute="bottom" secondItem="a6G-4U-DWQ" secondAttribute="bottom" constant="6" id="wsv-a1-X5s"/>
+                                    </constraints>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="historyCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="historyCell" textLabel="ygp-lr-YNE" style="IBUITableViewCellStyleDefault" id="c0S-Ol-VLc">
-                                        <rect key="frame" x="0.0" y="112" width="283" height="44"/>
+                                        <rect key="frame" x="0.0" y="92" width="283" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="c0S-Ol-VLc" id="QPK-G4-nDL">
                                             <rect key="frame" x="0.0" y="0.0" width="283" height="43"/>
@@ -517,7 +545,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Los Angeles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ygp-lr-YNE">
                                                     <rect key="frame" x="15" y="0.0" width="253" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -538,7 +566,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.19550107758620688" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="ZI9-Q0-dxB" firstAttribute="leading" secondItem="alA-o2-Wg3" secondAttribute="trailing" id="3p4-Vc-ndL"/>
                             <constraint firstItem="alA-o2-Wg3" firstAttribute="leading" secondItem="Ntl-ST-FNM" secondAttribute="leading" id="Bn7-Oc-J8p"/>
@@ -570,6 +598,7 @@
         <image name="Cancel 3" width="48" height="48"/>
         <image name="External Filled" width="50" height="50"/>
         <image name="Menu Filled" width="50" height="50"/>
+        <image name="Trash" width="48" height="48"/>
         <image name="Unknown.png" width="300" height="168"/>
         <image name="gray_star" width="2000" height="1918"/>
         <image name="lavo-restaurant.jpg" width="1925" height="1110"/>

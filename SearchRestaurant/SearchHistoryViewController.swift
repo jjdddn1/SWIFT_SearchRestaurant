@@ -17,7 +17,13 @@ class SearchHistoryViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.transform = CGAffineTransformMakeTranslation(-self.tableView.frame.width, 0)
-
+        
+        self.tableView.layer.shadowColor = UIColor.darkGrayColor().CGColor;//shadowColor阴影颜色
+        self.tableView.layer.shadowOffset = CGSizeMake(4,0);//shadowOffset阴影偏移,x向右偏移4，y向下偏移4，默认(0, -3),这个跟shadowRadius配合使用
+        self.tableView.layer.shadowOpacity = 0.8;//阴影透明度，默认0
+        self.tableView.layer.shadowRadius = 5;//阴影半径，默认3
+        self.tableView.clipsToBounds = false // 不屏蔽阴影
+        
         // Do any additional setup after loading the view.
     }
 
@@ -30,6 +36,7 @@ class SearchHistoryViewController: UIViewController, UITableViewDelegate, UITabl
         UIView.animateWithDuration(0.5) { () -> Void in
             self.tableView.transform = CGAffineTransformMakeTranslation(0, 0)
             self.beforeViewController.view.transform = CGAffineTransformMakeTranslation(self.tableView.frame.width / 2 , 0)
+            self.view.layer.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3).CGColor
         }
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -64,6 +71,7 @@ class SearchHistoryViewController: UIViewController, UITableViewDelegate, UITabl
     
     @IBAction func CancelButtonPressed(sender: UIButton) {
         UIView.animateWithDuration(0.5, animations: { () -> Void in
+            self.view.layer.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0).CGColor
             self.tableView.transform = CGAffineTransformMakeTranslation(-self.tableView.frame.width, 0)
             self.beforeViewController.view.transform = CGAffineTransformMakeTranslation(0 , 0)
             }) { (Bool) -> Void in
@@ -100,6 +108,9 @@ class SearchHistoryViewController: UIViewController, UITableViewDelegate, UITabl
             }
             self.tableView.transform = CGAffineTransformMakeTranslation(offsetX, 0)
             self.beforeViewController.view.transform = CGAffineTransformMakeTranslation(self.tableView.frame.width / 2 + offsetX / 2 , 0)
+            self.view.layer.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3 + offsetX / self.tableView.frame.width * 0.3 ).CGColor
+
+        
 //            print(location.x + offsetX)
 
     }
@@ -109,16 +120,36 @@ class SearchHistoryViewController: UIViewController, UITableViewDelegate, UITabl
             UIView.animateWithDuration(0.2, animations: { () -> Void in
                 self.tableView.transform = CGAffineTransformMakeTranslation(0, 0)
                 self.beforeViewController.view.transform = CGAffineTransformMakeTranslation(self.tableView.frame.width / 2 , 0)
+                self.view.layer.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3).CGColor
                 }) { (Bool) -> Void in
             }
+        }else if (touchInSide == true){
+            CancelButtonPressed(UIButton())
         }else{
             UIView.animateWithDuration(0.3, animations: { () -> Void in
                 self.tableView.transform = CGAffineTransformMakeTranslation(-self.tableView.frame.width, 0)
                 self.beforeViewController.view.transform = CGAffineTransformMakeTranslation(0 , 0)
+                self.view.layer.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0).CGColor
+
                 }) { (Bool) -> Void in
                     self.dismissViewControllerAnimated(false, completion: nil)
             }
         }
+    }
+
+    @IBAction func DeleteAllButtonPressed(sender: AnyObject) {
+        let alertController = UIAlertController(title: "Clean up search history", message: "Are you sure you want to delete all search history?", preferredStyle: .Alert)
+        let confirm = UIAlertAction(title: "Continue", style: .Default) { (_) -> Void in
+            DataStruct.historyArray.removeAll()
+            self.tableView.reloadData()
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
+        
+        alertController.addAction(cancel)
+        alertController.addAction(confirm)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+        
     }
 
 

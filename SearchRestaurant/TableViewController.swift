@@ -67,6 +67,7 @@ class TableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("tableViewCell", forIndexPath: indexPath) as! TableViewCell
+        cell.RestaurantPicImageView.image = UIImage(named:"Unknown.png")
         cell.RestaurantAddressLabel.text = self.jsonfile["response"]["data"][indexPath.row]["address"].string! + ", " + DataStruct.city + ", " + DataStruct.state
         cell.RestaurantNameLabel.text = self.jsonfile["response"]["data"][indexPath.row]["name"].string!
         cell.rate = self.jsonfile["response"]["data"][indexPath.row]["rating"].double!

@@ -21,7 +21,6 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet var DetailBackgroundView: SpringView!
     
     @IBOutlet weak var RestaurantNameLabel: UILabel!
-    
     @IBOutlet weak var Star1: UIImageView!
     @IBOutlet weak var Star2: UIImageView!
     @IBOutlet weak var Star3: UIImageView!
@@ -49,7 +48,6 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
     var rate = 0.0
     let regionRadius: CLLocationDistance = 150
     var initialLocation : CLLocation!
-    
     var starArray: NSMutableArray! = []
     
     //map related
@@ -63,6 +61,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
         setUpUI()
         CancelMapButton.addTarget(self, action: "cancelMap", forControlEvents: .TouchUpInside )
         OpenInButton.addTarget(self, action: "openInAppleMap", forControlEvents: .TouchUpInside )
+        MapButton.enabled = false
      // Do any additional setup after loading the view.
     }
 
@@ -160,7 +159,6 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
     
 
     @IBAction func MapButtonPressed(sender: UIButton) {
-
         DataStruct.ViewingMap = true
         frame = mapView.bounds
         MapButton.enabled = false
@@ -237,13 +235,13 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
         let annotation = MKPointAnnotation()
         
         annotation.coordinate = locationPinCoord
-        
         mapView.addAnnotation(annotation)
         mapView.showAnnotations([annotation], animated: true)
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
             regionRadius * 2.0, regionRadius * 2.0)
         mapView.setRegion(coordinateRegion, animated: true)
-        //        getBacktoLocation(location)
+        MapButton.enabled = true
+
     }
     
     func getBacktoLocation(location: CLLocation){
