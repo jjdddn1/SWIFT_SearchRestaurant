@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        readWithNSKeyedUnarchiver()
         return true
     }
 
@@ -38,9 +39,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(application: UIApplication) {
+        saveWithNSKeyedArchiver()
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    func saveWithNSKeyedArchiver(){
+        let sharedDataAccess = DataStruct.self
+        
+        let home = NSHomeDirectory() as NSString;
+        let docPath = home.stringByAppendingPathComponent("Documents") as NSString;
+        let filePath = docPath.stringByAppendingPathComponent("image.data");
+        /**
+         *  数据归档处理
+         */
+        let data = sharedDataAccess.historyArray
+//        var image_data : Dictionary<String, NSData> = [:]
+//        print("data archive\(data.count)")
+//        for string in data {
+//                image_data.updateValue(UIImagePNGRepresentation(value!)!, forKey: key)
+//        }
+        NSKeyedArchiver.archiveRootObject(data, toFile: filePath);
+    }
+    
+    func readWithNSKeyedUnarchiver() {
+        let sharedDataAccess = DataStruct.self
+        
+        let home = NSHomeDirectory() as NSString;
+        let docPath = home.stringByAppendingPathComponent("Documents") as NSString;
+        let filePath = docPath.stringByAppendingPathComponent("image.data");
+        let data = NSKeyedUnarchiver.unarchiveObjectWithFile(filePath)
+        if(data != nil){
+            print("read Data")
+            sharedDataAccess.historyArray = data as! [String]
+        }
+//        if(data != nil){
+//            let image_data = data as! Dictionary<String, NSData>
+//            print("image archive count\(image_data.count)")
+//            for (key, value) in image_data {
+//                
+//                sharedDataAccess.imageData!.updateValue(UIImage(data: value), forKey: key)
+//            }
+//        }
+        
+    }
 
 }
 
