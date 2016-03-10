@@ -46,8 +46,8 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter the city name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bLv-M9-AbE">
-                                <rect key="frame" x="54" y="310" width="267" height="50"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter the city name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bLv-M9-AbE">
+                                <rect key="frame" x="20" y="310" width="335" height="50"/>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.89819504309999998" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="nmX-Ht-NEX"/>
@@ -80,15 +80,15 @@
                             <constraint firstItem="bLv-M9-AbE" firstAttribute="centerY" secondItem="ksw-5A-SqF" secondAttribute="centerY" constant="1" id="9G3-RK-diP"/>
                             <constraint firstItem="MUr-04-TPn" firstAttribute="leading" secondItem="ksw-5A-SqF" secondAttribute="leading" id="ARp-IB-l1c"/>
                             <constraint firstItem="bLv-M9-AbE" firstAttribute="centerX" secondItem="ksw-5A-SqF" secondAttribute="centerX" id="DXs-cC-GdX"/>
-                            <constraint firstItem="bLv-M9-AbE" firstAttribute="leading" secondItem="FIh-5F-UVu" secondAttribute="leading" id="FEh-xH-N0h"/>
                             <constraint firstItem="MUr-04-TPn" firstAttribute="bottom" secondItem="Ab6-WS-kQE" secondAttribute="top" id="JIY-B9-mHW"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="bLv-M9-AbE" secondAttribute="leading" id="R04-KQ-y7F"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bLv-M9-AbE" secondAttribute="trailing" id="aYr-Cx-KFi"/>
                             <constraint firstItem="MUr-04-TPn" firstAttribute="centerX" secondItem="nWH-0g-sRi" secondAttribute="centerX" id="anY-Ay-7eX"/>
                             <constraint firstItem="Qgp-Zw-Duh" firstAttribute="top" secondItem="bLv-M9-AbE" secondAttribute="bottom" constant="34" id="f6H-Tg-EWo"/>
                             <constraint firstItem="MUr-04-TPn" firstAttribute="top" secondItem="ksw-5A-SqF" secondAttribute="top" id="gTR-ul-zqD"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Rng-TD-aF7" secondAttribute="leading" id="hMU-th-F5q"/>
                             <constraint firstItem="nWH-0g-sRi" firstAttribute="top" secondItem="Qgp-Zw-Duh" secondAttribute="bottom" constant="56" id="jyv-qw-6sD"/>
                             <constraint firstItem="Ab6-WS-kQE" firstAttribute="top" secondItem="nWH-0g-sRi" secondAttribute="bottom" constant="100" id="mJY-l2-cP8"/>
-                            <constraint firstItem="bLv-M9-AbE" firstAttribute="trailing" secondItem="FIh-5F-UVu" secondAttribute="trailing" id="oVw-pn-uKv"/>
                             <constraint firstItem="nWH-0g-sRi" firstAttribute="centerX" secondItem="ksw-5A-SqF" secondAttribute="centerX" id="pr9-Kr-vzh"/>
                             <constraint firstItem="FIh-5F-UVu" firstAttribute="top" secondItem="Rng-TD-aF7" secondAttribute="bottom" constant="15" id="uFb-4G-gQ6"/>
                             <constraint firstItem="FIh-5F-UVu" firstAttribute="centerX" secondItem="ksw-5A-SqF" secondAttribute="centerX" id="vrp-f8-13d"/>

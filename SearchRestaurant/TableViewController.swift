@@ -67,13 +67,31 @@ class TableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("tableViewCell", forIndexPath: indexPath) as! TableViewCell
+        
         cell.RestaurantPicImageView.image = UIImage(named:"Unknown.png")
-        cell.RestaurantAddressLabel.text = self.jsonfile["response"]["data"][indexPath.row]["address"].string! + ", " + DataStruct.city + ", " + DataStruct.state
-        cell.RestaurantNameLabel.text = self.jsonfile["response"]["data"][indexPath.row]["name"].string!
-        cell.rate = self.jsonfile["response"]["data"][indexPath.row]["rating"].double!
-
+        
+        if(self.jsonfile["response"]["data"][indexPath.row]["address"] != nil){
+            cell.RestaurantAddressLabel.text = self.jsonfile["response"]["data"][indexPath.row]["address"].string! + ", " + DataStruct.city + ", " + DataStruct.state
+        }else{
+            cell.RestaurantAddressLabel.text = "N/A"
+        }
+        
+        if self.jsonfile["response"]["data"][indexPath.row]["name"] != nil{
+            cell.RestaurantNameLabel.text = self.jsonfile["response"]["data"][indexPath.row]["name"].string!
+        }else{
+            cell.RestaurantNameLabel.text = "N/A"
+        }
+        
+        if(self.jsonfile["response"]["data"][indexPath.row]["rating"] != nil){
+            cell.rate = self.jsonfile["response"]["data"][indexPath.row]["rating"].double!
+        }else{
+            cell.rate = 0.0
+        }
+        
         if self.jsonfile["response"]["data"][indexPath.row]["cuisine"] != nil {
             cell.RestaurantTypeLabel.text = self.jsonfile["response"]["data"][indexPath.row]["cuisine"].arrayObject![0] as? String
+        }else{
+            cell.RestaurantTypeLabel.text = "N/A"
         }
         cell.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.7)
 
@@ -164,13 +182,28 @@ class TableViewController: UITableViewController {
             
             des.initialLocation = cor
             
-            des.RestaurantAddress =
+            if self.jsonfile["response"]["data"][currentIndex]["address"] != nil{
+                des.RestaurantAddress =
                 self.jsonfile["response"]["data"][currentIndex]["address"].string! + ", " + DataStruct.city + ", " + DataStruct.state
-            des.RestaurantName = self.jsonfile["response"]["data"][currentIndex]["name"].string!
-            des.rate = self.jsonfile["response"]["data"][currentIndex]["rating"].double!
+            }else{
+                des.RestaurantAddress = "N/A"
+            }
+            
+            if self.jsonfile["response"]["data"][currentIndex]["name"] != nil{
+                des.RestaurantName = self.jsonfile["response"]["data"][currentIndex]["name"].string!
+            }else{
+                des.RestaurantName = "N/A"
+            }
+            if(self.jsonfile["response"]["data"][currentIndex]["rating"] != nil){
+                des.rate = self.jsonfile["response"]["data"][currentIndex]["rating"].double!
+            }else{
+                des.rate = 0.0
+            }
             
             if self.jsonfile["response"]["data"][currentIndex]["cuisine"] != nil {
                 des.RestaurantType = self.jsonfile["response"]["data"][currentIndex]["cuisine"].arrayObject![0] as! String
+            }else{
+                des.RestaurantType = "N/A"
             }
             
             

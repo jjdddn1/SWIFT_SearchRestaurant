@@ -37,6 +37,11 @@ class TableViewCell: UITableViewCell {
             starArray.addObject(self.Star4)
             starArray.addObject(self.Star5)
             
+            for star in starArray  {
+                let view = star as! UIImageView
+                view.image = UIImage(named: "gray_star")
+            }
+            
             var i = 0
             while(rate > 0){
                 let starImage = starArray[i] as! UIImageView

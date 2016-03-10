@@ -29,6 +29,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         CityTextField.delegate = self
+        CityTextField.clearButtonMode = UITextFieldViewMode.UnlessEditing ;
         setUpUI()
     }
     
@@ -147,6 +148,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func PopUPSearchPage() {
         gpaViewController.placeDelegate = self
         presentViewController(gpaViewController, animated: true, completion: nil)
+        gpaViewController.setSearchText(CityTextField.text!)
+
     }
     
     @IBAction func SearchButtonPressed(sender: UIButton) {

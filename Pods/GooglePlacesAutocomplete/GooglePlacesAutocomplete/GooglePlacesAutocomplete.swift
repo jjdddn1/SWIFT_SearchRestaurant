@@ -127,6 +127,14 @@ public class GooglePlacesAutocomplete: UINavigationController {
         return city
     }
     
+    public func setSearchText(str : String) {
+        if(self.gpaViewController.searchBar != nil){
+            self.gpaViewController.searchBar.text = str
+            self.gpaViewController.searchBar(gpaViewController.searchBar, textDidChange: str)
+            city = str
+        }
+    }
+    
     func close() {
         placeDelegate?.placeViewClosed?()
     }
