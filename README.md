@@ -2,6 +2,7 @@
 
 ## Instruction 
 This app help you find the restaurants in a specific city with U.S
+
 If you happend to try out this app and found bugs or had any advise, **PLEASE** open an issue or sent me an email: huiyuanr@usc.edu. it will be **GREATLY** appreciated. Thank you! I really value what I'm doing!
 
 ## Screenshot
