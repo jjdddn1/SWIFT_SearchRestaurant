@@ -7,7 +7,7 @@ If you happend to try out this app and found bugs or had any advise, **PLEASE** 
 ## Screenshot
 > The pics maybe outdated cuz I kept updating the app (but too lazy to update the pics 😄)
 
-![image](https://github.com/jjdddn1/Basic_Calculator/blob/master/screenshot/1.png?raw=false)
+![image](https://github.com/jjdddn1/SWIFT_SearchRestaurant/blob/master/screenshot/1.png?raw=false)
 
 You can find some gif [here](http://huiyuanr.portfoliobox.net/rest)
 
